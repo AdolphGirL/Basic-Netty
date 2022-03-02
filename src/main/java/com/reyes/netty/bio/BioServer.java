@@ -12,32 +12,21 @@ import org.slf4j.LoggerFactory;
 
 public class BioServer {
 	
-	/**
-	 * 使用線程池機制模擬bio
-	 * 
-	 * 1. 創建線程池
-	 * 2. 有客戶端，就創建一個線程，與其通訊
-	 */
-	
 	private static final Logger LOGGER = LoggerFactory.getLogger(BioServer.class); 
 	
 	public void mExcute() throws IOException {
-//		創建線程池
 		ExecutorService pools = Executors.newCachedThreadPool();
 		
-//		創建server socket
 		ServerSocket serverSocket = new ServerSocket(6666);
 		LOGGER.info("[+] [mExcute] server socket start ... ");
 		
-//		進行監聽
 		while (true) {
-			LOGGER.info("[+] [mExcute] 等待連接 ... ");
+			LOGGER.info("[+] [mExcute] 嚙踝蕭嚙豎連嚙踝蕭 ... ");
 			
 			final Socket socket = serverSocket.accept();
-			LOGGER.info("[+] [mExcute] 一個連接完成 ... ");
+			LOGGER.info("[+] [mExcute] 嚙瑾嚙諉連嚙踝蕭嚙踝蕭嚙踝蕭 ... ");
 //			LOGGER.info("[+] [mExcute] socket open ... ");
 			
-//			啟動一個線程
 			pools.execute(new Runnable() {
 				public void run() {
 					handler(socket);
@@ -47,9 +36,8 @@ public class BioServer {
 		}
 	}
 	
-//	與客戶單通訊
 	public void handler(Socket socket) {
-		LOGGER.info("[+] [handler] 線程資料，id: {}，name: {} ", Thread.currentThread().getId(), Thread.currentThread().getName());
+		LOGGER.info("[+] [handler] 嚙線嚙緹嚙踝蕭ヾAid: {}嚙璀name: {} ", Thread.currentThread().getId(), Thread.currentThread().getName());
 		
 		
 		byte[] bytes = null;
@@ -59,7 +47,7 @@ public class BioServer {
 			inputStream = socket.getInputStream();
 			
 			while (true) {
-				LOGGER.info("[+] [mExcute] 等待READ ... ");
+				LOGGER.info("[+] [mExcute] 嚙踝蕭嚙踝蕭READ ... ");
 				int read = inputStream.read(bytes);
 				if (read != -1) {
 					LOGGER.info("[+] [handler] client data: {} ", new String(bytes, 0, read));
